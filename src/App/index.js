@@ -1,15 +1,22 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import NavBar from '../components/NavBar';
 import firebaseConfig from '../helpers/apiKeys';
+import getProjects from '../helpers/data/ProjectData';
 import Routes from '../helpers/Routes';
-import './App.scss';
 
 firebase.initializeApp(firebaseConfig);
 
 function App() {
   const [user, setUser] = useState(null);
+  const [projects, setProjects] = useState([]);
+
+  useEffect(() => {
+    getProjects().then((response) => setProjects(response));
+  }, []);
+
+  console.warn(projects);
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged((authed) => {
