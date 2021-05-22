@@ -1,5 +1,4 @@
-import firebase from 'firebase/app';
-import 'firebase/auth';
+import firebase from 'firebase';
 import React, { useState, useEffect } from 'react';
 import NavBar from '../components/NavBar';
 import firebaseConfig from '../helpers/apiKeys';
@@ -9,8 +8,9 @@ import Routes from '../helpers/Routes';
 firebase.initializeApp(firebaseConfig);
 
 function App() {
-  const [user, setUser] = useState(null);
   const [projects, setProjects] = useState([]);
+
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
     getProjects().then((response) => setProjects(response));
