@@ -39,7 +39,7 @@ export default function Routes() {
         <Route exact path='/portfolio' component={Projects} />
         <Route exact path='/technology' component={Technology} />
         <Route exact path='/contact' component={Contact} />
-        <Route exact path='/logon' component={Home} />
+        <Route exact path='/login' component={Home} />
         {/* <PrivateRoute
           exact
           path='/about-edit'
