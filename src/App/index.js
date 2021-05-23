@@ -16,8 +16,6 @@ function App() {
     getProjects().then((response) => setProjects(response));
   }, []);
 
-  console.warn(projects);
-
   useEffect(() => {
     firebase.auth().onAuthStateChanged((authed) => {
       if (authed) {
@@ -42,6 +40,8 @@ function App() {
     />
     <Routes
       user={user}
+      projects={projects}
+      setProjects={setProjects}
     />
   </>
   );
