@@ -2,7 +2,12 @@ import React from 'react';
 
 function Contact() {
   return (
-    <h1>Contact page</h1>
+    <div>
+      Contact Info: <br />
+      LinkedIn: linkedin.com/in/matthewggonzales <br />
+      Email: gonzalesmattg@gmail.com <br />
+      GitHub: github.com/GonzalesMatthew <br />
+    </div>
   );
 }
 
