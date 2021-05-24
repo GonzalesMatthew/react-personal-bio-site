@@ -3,17 +3,19 @@ import React, { useState, useEffect } from 'react';
 import NavBar from '../components/NavBar';
 import firebaseConfig from '../helpers/apiKeys';
 import getProjects from '../helpers/data/ProjectData';
+import getTechnology from '../helpers/data/TechnologyData';
 import Routes from '../helpers/Routes';
 
 firebase.initializeApp(firebaseConfig);
 
 function App() {
   const [projects, setProjects] = useState([]);
-
+  const [technology, setTechnology] = useState([]);
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    getProjects().then((response) => setProjects(response));
+    getProjects().then(setProjects);
+    getTechnology().then(setTechnology);
   }, []);
 
   useEffect(() => {
@@ -41,7 +43,9 @@ function App() {
     <Routes
       user={user}
       projects={projects}
+      technology={technology}
       setProjects={setProjects}
+      setTechnology={setTechnology}
     />
   </>
   );

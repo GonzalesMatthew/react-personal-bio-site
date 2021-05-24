@@ -1,9 +1,24 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import TechCard from '../components/TechCard';
 
-function Technology() {
+function Technology({ technology }) {
   return (
-    <h1>Technology page</h1>
+    <div className="card-container">
+      {technology.map((techInfo) => (
+        <TechCard
+          key={techInfo.firebaseKey}
+          name={techInfo.name}
+          description={techInfo.description}
+          image={techInfo.image}
+        />
+      ))}
+    </div>
   );
 }
+
+Technology.propTypes = {
+  technology: PropTypes.array.isRequired
+};
 
 export default Technology;
