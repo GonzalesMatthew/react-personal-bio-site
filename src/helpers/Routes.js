@@ -30,14 +30,16 @@ PrivateRoute.propTypes = {
   user: PropTypes.any
 };
 
-export default function Routes({ projects, setProjects }) {
+export default function Routes({
+  projects, technology, setProjects, setTechnology
+}) {
 // export default function Routes({ user }) {
   return (
     <div>
       <Switch>
         <Route exact path='/' component={Home} />
         <Route exact path='/portfolio' component={() => <Projects projects={projects} setProjects={setProjects}/>} />
-        <Route exact path='/technology' component={Technology} />
+        <Route exact path='/technology' component={() => <Technology technology={technology} setTechnology={setTechnology}/>} />
         <Route exact path='/contact' component={Contact} />
         <Route exact path='/login' component={Home} />
         {/* <PrivateRoute
@@ -72,5 +74,7 @@ export default function Routes({ projects, setProjects }) {
 Routes.propTypes = {
   user: PropTypes.any,
   projects: PropTypes.array.isRequired,
-  setProjects: PropTypes.func.isRequired
+  technology: PropTypes.array.isRequired,
+  setProjects: PropTypes.func.isRequired,
+  setTechnology: PropTypes.func.isRequired
 };
