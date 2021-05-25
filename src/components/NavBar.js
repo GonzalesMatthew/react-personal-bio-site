@@ -17,19 +17,13 @@ const NavBar = ({ admin }) => {
 
   const toggle = () => setIsOpen(!isOpen);
 
-  const authenticated = () => (
+  const authenticatedLinks = () => (
     <>
       <NavItem>
-        <Link className="nav-link" to="/technology-edit">About Me Edit</Link>
+        <Link className="nav-link" to="/techn-edit">Edit-Tech</Link>
       </NavItem>
       <NavItem>
-        <Link className="nav-link" to="/projects-edit">Portfolio Edit</Link>
-      </NavItem>
-      <NavItem>
-        <Link className="nav-link" to="/technology-edit">Technology Edit</Link>
-      </NavItem>
-      <NavItem>
-        <Link className="nav-link" to="/technology-edit">Contact Edit</Link>
+        <Link className="nav-link" to="/projects-edit">Edit-Portolio</Link>
       </NavItem>
     </>
   );
@@ -41,13 +35,12 @@ const NavBar = ({ admin }) => {
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
-            { admin && authenticated()}
             <NavItem>
-                {
-                  admin
-                    ? <Button color='info' onClick={signOutUser}>Thank you!</Button>
-                    : <Button color='info' onClick={signInUser}>Share Google Info</Button>
-                }
+              {
+                admin
+                  ? <Button color='info' onClick={signOutUser}>Thank you!</Button>
+                  : <Button color='info' onClick={signInUser}>Share Google Info</Button>
+              }
             </NavItem>
             <NavItem>
               <Link className="nav-link" to="/">About Me</Link>
@@ -61,6 +54,7 @@ const NavBar = ({ admin }) => {
             <NavItem>
               <Link className="nav-link" to="/contact">Contact</Link>
             </NavItem>
+              { admin && authenticatedLinks()}
           </Nav>
         </Collapse>
       </Navbar>
