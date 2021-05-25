@@ -11,21 +11,21 @@ const getTechnology = () => new Promise((resolve, reject) => {
 
 const createTechnology = (techObj) => new Promise((resolve, reject) => {
   axios.post(`${dbUrl}/technology.json`, techObj)
-    .then(getTechnology)
+    .then(() => resolve(getTechnology()))
     .catch((error) => reject(error));
 });
 
 const updateTechnology = (firebaseKey, techObj) => new Promise((resolve, reject) => {
-  axios.patch(`${dbUrl}/technology/${firebaseKey}`, techObj)
-    .then(getTechnology())
+  axios.patch(`${dbUrl}/technology/${firebaseKey}.json`, techObj)
+    .then(() => resolve(getTechnology()))
     .catch((error) => reject(error));
 });
 
 const deleteTechnology = (firebaseKey) => new Promise((resolve, reject) => {
-  axios.delete(`${dbUrl}/technology/${firebaseKey}`)
-    .then(() => getTechnology().then)
+  axios.delete(`${dbUrl}/technology/${firebaseKey}.json`)
+    .then(() => resolve(getTechnology()))
     .catch((error) => reject(error));
-})
+});
 
 export default {
   getTechnology, createTechnology, updateTechnology, deleteTechnology
