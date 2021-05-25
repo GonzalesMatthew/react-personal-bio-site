@@ -11,7 +11,7 @@ firebase.initializeApp(firebaseConfig);
 function App() {
   const [projects, setProjects] = useState([]);
   const [technology, setTechnology] = useState([]);
-  const [user, setUser] = useState(null);
+  const [admin, setAdmin] = useState(null);
 
   useEffect(() => {
     getProjects().then(setProjects);
@@ -20,17 +20,10 @@ function App() {
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged((authed) => {
-      if (authed) {
-        // something to happen
-        const userInfoObj = {
-          fullName: authed.displayName,
-          profileImage: authed.photoURL,
-          uid: authed.uid,
-          user: authed.email.split('@')[0]
-        };
-        setUser(userInfoObj);
-      } else if (user || user === null) {
-        setUser(false);
+      if (authed && (authed.uid === firebaseConfig.adminId)) {
+        setAdmin(true);
+      } else if (admin || admin === null) {
+        setAdmin(false);
       }
     });
   }, []);
@@ -38,10 +31,10 @@ function App() {
   return (
     <>
     <NavBar
-      user={user}
+      admin={admin}
     />
     <Routes
-      user={user}
+      admin={admin}
       projects={projects}
       technology={technology}
       setProjects={setProjects}

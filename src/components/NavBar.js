@@ -10,26 +10,20 @@ import {
   NavItem,
   Button
 } from 'reactstrap';
-import { signOutUser } from '../helpers/auth';
+import { signInUser, signOutUser } from '../helpers/auth';
 
-const NavBar = ({ user }) => {
+const NavBar = ({ admin }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
 
-  const authenticated = () => (
+  const authenticatedLinks = () => (
     <>
       <NavItem>
-        <Link className="nav-link" to="/technology-edit">About Me Edit</Link>
+        <Link className="nav-link" to="/techn-edit">Edit-Tech</Link>
       </NavItem>
       <NavItem>
-        <Link className="nav-link" to="/projects-edit">Portfolio Edit</Link>
-      </NavItem>
-      <NavItem>
-        <Link className="nav-link" to="/technology-edit">Technology Edit</Link>
-      </NavItem>
-      <NavItem>
-        <Link className="nav-link" to="/technology-edit">Contact Edit</Link>
+        <Link className="nav-link" to="/projects-edit">Edit-Portolio</Link>
       </NavItem>
     </>
   );
@@ -41,17 +35,13 @@ const NavBar = ({ user }) => {
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
-            { user && authenticated()}
-            {
-              user !== null
-              && <NavItem>
-                {
-                  user
-                    && <Button color='danger' onClick={signOutUser}>Sign Out</Button>
-                    // : <Button color='info' onClick={signInUser}>Sign In</Button>
-                }
-              </NavItem>
-            }
+            <NavItem>
+              {
+                admin
+                  ? <Button color='info' onClick={signOutUser}>Thank you!</Button>
+                  : <Button color='info' onClick={signInUser}>Share Google Info</Button>
+              }
+            </NavItem>
             <NavItem>
               <Link className="nav-link" to="/">About Me</Link>
             </NavItem>
@@ -64,6 +54,7 @@ const NavBar = ({ user }) => {
             <NavItem>
               <Link className="nav-link" to="/contact">Contact</Link>
             </NavItem>
+              { admin && authenticatedLinks()}
           </Nav>
         </Collapse>
       </Navbar>
@@ -72,7 +63,7 @@ const NavBar = ({ user }) => {
 };
 
 NavBar.propTypes = {
-  user: PropTypes.any
+  admin: PropTypes.any
 };
 
 export default NavBar;
