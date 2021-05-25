@@ -43,7 +43,7 @@ export default function Routes({
         <Route exact path='/technology' component={() => <Technology technology={technology} setTechnology={setTechnology}/>} />
         <Route exact path='/contact' component={Contact} />
         <PrivateRoute
-          exact path='/projects-edit'
+          exact path='/project-edit'
           admin={admin}
           component={ProjectsEdit}
         />

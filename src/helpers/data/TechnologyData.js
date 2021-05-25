@@ -27,6 +27,6 @@ const deleteTechnology = (firebaseKey) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-export default {
+export {
   getTechnology, createTechnology, updateTechnology, deleteTechnology
 };
