@@ -10,9 +10,9 @@ import {
   NavItem,
   Button
 } from 'reactstrap';
-import { signOutUser } from '../helpers/auth';
+import { signInUser, signOutUser } from '../helpers/auth';
 
-const NavBar = ({ user }) => {
+const NavBar = ({ admin }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
@@ -31,6 +31,7 @@ const NavBar = ({ user }) => {
       <NavItem>
         <Link className="nav-link" to="/technology-edit">Contact Edit</Link>
       </NavItem>
+      <Button id="logInBtn" onClick={signInUser}>Sign In</Button>
     </>
   );
 
@@ -41,14 +42,14 @@ const NavBar = ({ user }) => {
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
-            { user && authenticated()}
+            { admin && authenticated()}
             {
-              user !== null
+              admin !== null
               && <NavItem>
                 {
-                  user
-                    && <Button color='danger' onClick={signOutUser}>Sign Out</Button>
-                    // : <Button color='info' onClick={signInUser}>Sign In</Button>
+                  admin
+                    ? <Button color='danger' onClick={signOutUser}>Sign Out</Button>
+                    : <Button color='info' onClick={signInUser}>Sign In</Button>
                 }
               </NavItem>
             }
@@ -72,7 +73,7 @@ const NavBar = ({ user }) => {
 };
 
 NavBar.propTypes = {
-  user: PropTypes.any
+  admin: PropTypes.any
 };
 
 export default NavBar;

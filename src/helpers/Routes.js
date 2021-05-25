@@ -10,15 +10,16 @@ import NotFound from '../views/NotFound';
 import Projects from '../views/Projects';
 import Technology from '../views/Technologies';
 import Contact from '../views/Contact';
+import HomeEdit from '../views/HomeEdit';
 
 // The PrivateRoute function is creating a private route and returing the specified route based on the props
 // We specify the specific props we want to use in the routeChecker and pass the rest with the spread
 
-const PrivateRoute = ({ component: Component, user, ...rest }) => {
+const PrivateRoute = ({ component: Component, admin, ...rest }) => {
 // when we call this function in the return, it is looking for an argument. `props` here is taco.
 
-  const routeChecker = (taco) => (user
-    ? (<Component {...taco} user={user} />)
+  const routeChecker = (taco) => (admin
+    ? (<Component {...taco} admin={admin} />)
     : (<Redirect to={{ pathname: '/', state: { from: taco.location } }} />));
     // this render method is one we can use instead of component. Since the components are being dynamically created, we use render. Read the docs for more info: https://reactrouter.com/web/api/Route/render-func
   // Just like in the routes if we want the dynamically rendered component to have access to the Router props, we have to pass `props` as an argument.
@@ -27,13 +28,12 @@ const PrivateRoute = ({ component: Component, user, ...rest }) => {
 
 PrivateRoute.propTypes = {
   component: PropTypes.func,
-  user: PropTypes.any
+  admin: PropTypes.any
 };
 
 export default function Routes({
-  projects, technology, setProjects, setTechnology
+  projects, technology, setProjects, setTechnology, admin
 }) {
-// export default function Routes({ user }) {
   return (
     <div>
       <Switch>
@@ -41,30 +41,27 @@ export default function Routes({
         <Route exact path='/portfolio' component={() => <Projects projects={projects} setProjects={setProjects}/>} />
         <Route exact path='/technology' component={() => <Technology technology={technology} setTechnology={setTechnology}/>} />
         <Route exact path='/contact' component={Contact} />
-        <Route exact path='/login' component={Home} />
-        {/* <PrivateRoute
-          exact
-          path='/about-edit'
-          user={user}
-          component={() => <AboutEdit racers={racers}
-          setRacers={setRacers} user={user}/>}
+        <Route exact path='/logon' component={() => <HomeEdit admin={admin}/>}/>
+        <PrivateRoute
+          exact path='/about-edit'
+          admin={admin}
+          component={Home}
         />
         <PrivateRoute
-          path='/projects-edit'
-          user={user}
-          component=() => {<ProjectsEdit projects={projects} setProjects={setProjects}/>}}
+          exact path='/projects-edit'
+          admin={admin}
+          component={Home}
         />
         <PrivateRoute
-          path='/technologies-edit'
-          user={user}
-          component={TechnologyEdit}
+          exact path='/technologies-edit'
+          admin={admin}
+          component={Home}
         />
         <PrivateRoute
-          path='/contact-edit'
-          user={user}
-          component={ContactEdit}
+          exact path='/contact-edit'
+          admin={admin}
+          component={Home}
         />
-        */}
         <Route path='*' component = {NotFound} />
       </Switch>
     </div>
@@ -72,7 +69,7 @@ export default function Routes({
 }
 
 Routes.propTypes = {
-  user: PropTypes.any,
+  admin: PropTypes.any,
   projects: PropTypes.array.isRequired,
   technology: PropTypes.array.isRequired,
   setProjects: PropTypes.func.isRequired,
