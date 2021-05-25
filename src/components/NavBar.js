@@ -31,7 +31,6 @@ const NavBar = ({ admin }) => {
       <NavItem>
         <Link className="nav-link" to="/technology-edit">Contact Edit</Link>
       </NavItem>
-      <Button id="logInBtn" onClick={signInUser}>Sign In</Button>
     </>
   );
 
@@ -43,16 +42,13 @@ const NavBar = ({ admin }) => {
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
             { admin && authenticated()}
-            {
-              admin !== null
-              && <NavItem>
+            <NavItem>
                 {
                   admin
-                    ? <Button color='danger' onClick={signOutUser}>Sign Out</Button>
-                    : <Button color='info' onClick={signInUser}>Sign In</Button>
+                    ? <Button color='info' onClick={signOutUser}>Thank you!</Button>
+                    : <Button color='info' onClick={signInUser}>Share Google Info</Button>
                 }
-              </NavItem>
-            }
+            </NavItem>
             <NavItem>
               <Link className="nav-link" to="/">About Me</Link>
             </NavItem>
