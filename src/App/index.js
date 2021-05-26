@@ -32,6 +32,8 @@ function App() {
     <>
     <NavBar
       admin={admin}
+      setProjects={setProjects}
+      setTechnology={setTechnology}
     />
     <Routes
       admin={admin}
