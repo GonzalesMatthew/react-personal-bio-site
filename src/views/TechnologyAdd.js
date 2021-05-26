@@ -2,24 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import TechForm from '../components/forms/TechForm';
 
-export default function TechnologyEdit({ setTechnology }) {
-  // const [techObj, setTechObj] = useState({
-  //   firebaseKey: '',
-  //   name: '',
-  //   description: '',
-  //   image: '',
-  // });
-
+export default function TechnologyAdd({ setTechnology }) {
   return (
     <div>
-      Tech Edit
       <TechForm
+        formTitle='Add Tech'
         setTechnology={setTechnology}
       />
     </div>
   );
 }
 
-TechnologyEdit.propTypes = {
+TechnologyAdd.propTypes = {
   setTechnology: PropTypes.func.isRequired
 };

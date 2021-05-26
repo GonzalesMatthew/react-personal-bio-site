@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { createTechnology } from '../../helpers/data/TechnologyData';
+import { createTechnology, updateTechnology } from '../../helpers/data/TechnologyData';
 
-export default function TechForm({ setTechnology }) {
+export default function TechForm({
+  formTitle, setTechnology, firebaseKey, name, image, description
+}) {
   const [tech, setTech] = useState({
-    firebaseKey: '',
-    name: '',
-    description: '',
-    image: '',
+    firebaseKey: firebaseKey || null,
+    name: name || '',
+    description: description || '',
+    image: image || '',
   });
 
   const inputHandler = (e) => {
@@ -19,7 +21,11 @@ export default function TechForm({ setTechnology }) {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    createTechnology(tech).then(setTechnology);
+    if (tech.firebaseKey) {
+      updateTechnology(tech).then(setTechnology);
+    } else {
+      createTechnology(tech).then(setTechnology);
+    }
   };
 
   return (
@@ -30,7 +36,7 @@ export default function TechForm({ setTechnology }) {
           autoComplete='off'
           onSubmit={submitHandler}
         >
-          <h2>Add Tech</h2>
+          <h2>{formTitle}</h2>
           <label>Name:</label>
           <input
             name='name'
@@ -63,5 +69,10 @@ export default function TechForm({ setTechnology }) {
 }
 
 TechForm.propTypes = {
+  formTitle: PropTypes.string.isRequired,
   setTechnology: PropTypes.func.isRequired,
+  firebaseKey: PropTypes.string,
+  name: PropTypes.string,
+  image: PropTypes.string,
+  description: PropTypes.string,
 };

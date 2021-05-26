@@ -10,8 +10,8 @@ import NotFound from '../views/NotFound';
 import Projects from '../views/Projects';
 import Technology from '../views/Technologies';
 import Contact from '../views/Contact';
-import ProjectsEdit from '../views/ProjectsEdit';
-import TechnologyEdit from '../views/TechnologyEdit';
+import ProjectsAdd from '../views/ProjectsAdd';
+import TechnologyAdd from '../views/TechnologyAdd';
 
 // The PrivateRoute function is creating a private route and returing the specified route based on the props
 // We specify the specific props we want to use in the routeChecker and pass the rest with the spread
@@ -43,14 +43,14 @@ export default function Routes({
         <Route exact path='/technology' component={() => <Technology technology={technology} setTechnology={setTechnology}/>} />
         <Route exact path='/contact' component={Contact} />
         <PrivateRoute
-          exact path='/project-edit'
+          exact path='/project-add'
           admin={admin}
-          component={() => <ProjectsEdit setProjects={setProjects}/>}
+          component={() => <ProjectsAdd setProjects={setProjects}/>}
         />
         <PrivateRoute
-          exact path='/tech-edit'
+          exact path='/tech-add'
           admin={admin}
-          component={() => <TechnologyEdit setTechnology={setTechnology}/>}
+          component={() => <TechnologyAdd setTechnology={setTechnology}/>}
         />
         <Route path='*' component = {NotFound} />
       </Switch>

@@ -1,10 +1,9 @@
 import React from 'react';
 import ProjectForm from '../components/forms/ProjectForm';
 
-export default function ProjectsEdit() {
+export default function ProjectsAdd() {
   return (
     <div>
-      Project Edit
       <ProjectForm/>
     </div>
   );

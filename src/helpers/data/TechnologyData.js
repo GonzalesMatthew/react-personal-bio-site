@@ -21,9 +21,11 @@ const createTechnology = (techObj) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-const updateTechnology = (firebaseKey, techObj) => new Promise((resolve, reject) => {
-  axios.patch(`${dbUrl}/technology/${firebaseKey}.json`, techObj)
-    .then(() => resolve(getTechnology()))
+const updateTechnology = (techObj) => new Promise((resolve, reject) => {
+  axios.patch(`${dbUrl}/technology/${techObj.firebaseKey}.json`, techObj)
+    .then(() => {
+      getTechnology().then(resolve);
+    })
     .catch((error) => reject(error));
 });
 

@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Card,
   CardText,
@@ -7,6 +7,7 @@ import {
   Button
 } from 'reactstrap';
 import { deleteTechnology } from '../helpers/data/TechnologyData';
+import TechForm from './forms/TechForm';
 
 const TechCard = ({
   firebaseKey,
@@ -15,15 +16,38 @@ const TechCard = ({
   description,
   setTechnology
 }) => {
-  const handleClick = () => {
-    deleteTechnology(firebaseKey).then(setTechnology);
+  const [update, setUpdate] = useState(false);
+
+  const handleClick = (type) => {
+    switch (type) {
+      case 'update':
+        // updateTechnology(firebaseKey).then(setTechnology);
+        setUpdate((prevState) => !prevState);
+        break;
+      case 'delete':
+        deleteTechnology(firebaseKey).then(setTechnology);
+        break;
+      default:
+        break;
+    }
   };
   return (
     <Card body>
       <CardTitle tag="h5">{name}</CardTitle>
       <CardText>{description}</CardText>
       <img width="110px" src={image} alt={name}/>
-      <Button color="danger" onClick={handleClick}>Delete Tech</Button>
+      <Button color="danger" onClick={() => handleClick('delete')}>Delete Tech</Button>
+      <Button color="info" onClick={() => handleClick('update')}>{update ? 'Close Form' : 'Update Tech'}</Button>
+      {
+        update && <TechForm
+          formTitle='Update Tech'
+          setTechnology={setTechnology}
+          firebaseKey={firebaseKey}
+          name={name}
+          image={image}
+          description={description}
+        />
+      }
     </Card>
   );
 };
