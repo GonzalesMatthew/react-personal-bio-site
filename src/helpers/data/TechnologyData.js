@@ -11,22 +11,32 @@ const getTechnology = () => new Promise((resolve, reject) => {
 
 const createTechnology = (techObj) => new Promise((resolve, reject) => {
   axios.post(`${dbUrl}/technology.json`, techObj)
-    .then(() => resolve(getTechnology()))
+    .then((response) => {
+      const fbKey = { firebaseKey: response.data.name };
+      axios.patch(`${dbUrl}/technology/${response.data.name}.json`, fbKey)
+        .then(() => {
+          getTechnology().then((techArray) => resolve(techArray));
+        });
+    })
     .catch((error) => reject(error));
 });
 
-const updateTechnology = (firebaseKey, techObj) => new Promise((resolve, reject) => {
-  axios.patch(`${dbUrl}/technology/${firebaseKey}.json`, techObj)
-    .then(() => resolve(getTechnology()))
+const updateTechnology = (techObj) => new Promise((resolve, reject) => {
+  axios.patch(`${dbUrl}/technology/${techObj.firebaseKey}.json`, techObj)
+    .then(() => {
+      getTechnology().then(resolve);
+    })
     .catch((error) => reject(error));
 });
 
 const deleteTechnology = (firebaseKey) => new Promise((resolve, reject) => {
   axios.delete(`${dbUrl}/technology/${firebaseKey}.json`)
-    .then(() => resolve(getTechnology()))
+    .then(() => {
+      getTechnology().then((techArray) => resolve(techArray));
+    })
     .catch((error) => reject(error));
 });
 
-export default {
+export {
   getTechnology, createTechnology, updateTechnology, deleteTechnology
 };

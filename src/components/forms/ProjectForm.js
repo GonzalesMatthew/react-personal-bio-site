@@ -1,9 +1,9 @@
 import React from 'react';
 
-export default function ProjectsEdit() {
+export default function ProjectForm() {
   return (
     <div>
-      Project Edit
+      Project Form.
     </div>
   );
 }

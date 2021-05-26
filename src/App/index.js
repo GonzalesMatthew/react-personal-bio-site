@@ -1,9 +1,9 @@
 import firebase from 'firebase';
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import NavBar from '../components/NavBar';
 import firebaseConfig from '../helpers/apiKeys';
-import getProjects from '../helpers/data/ProjectData';
-import getTechnology from '../helpers/data/TechnologyData';
+import { getProjects } from '../helpers/data/ProjectData';
+import { getTechnology } from '../helpers/data/TechnologyData';
 import Routes from '../helpers/Routes';
 
 firebase.initializeApp(firebaseConfig);
@@ -32,6 +32,8 @@ function App() {
     <>
     <NavBar
       admin={admin}
+      setProjects={setProjects}
+      setTechnology={setTechnology}
     />
     <Routes
       admin={admin}
