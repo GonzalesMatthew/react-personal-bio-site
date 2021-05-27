@@ -4,7 +4,10 @@ import NavBar from '../components/NavBar';
 import firebaseConfig from '../helpers/apiKeys';
 import { getProjects } from '../helpers/data/ProjectData';
 import { getTechnology } from '../helpers/data/TechnologyData';
-import { createUser } from '../helpers/data/UserData';
+import {
+  // checkUser,
+  createUser
+} from '../helpers/data/UserData';
 import Routes from '../helpers/Routes';
 
 firebase.initializeApp(firebaseConfig);
@@ -13,7 +16,7 @@ function App() {
   const [projects, setProjects] = useState([]);
   const [technology, setTechnology] = useState([]);
   const [admin, setAdmin] = useState(null);
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
     getProjects().then(setProjects);
@@ -33,13 +36,16 @@ function App() {
         };
         setAdmin(false);
         setUser(userInfoObj);
-        console.warn(user);
-        // getSingleUser(userInfoObj).then((response) => {
-        //   if (Object.values(response.data).length === 0) {
+        // checkUser(userInfoObj).then((resp) => {
+        //   if (resp === null) {
         //     createUser(userInfoObj);
+        //   }
+        // });
         createUser(userInfoObj);
       } else if (admin || admin === null) {
         setAdmin(false);
+      } else if (user || user === null) {
+        setUser(false);
       }
     });
   }, []);
@@ -48,6 +54,7 @@ function App() {
     <>
     <NavBar
       admin={admin}
+      user={user}
       setProjects={setProjects}
       setTechnology={setTechnology}
     />

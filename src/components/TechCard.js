@@ -14,7 +14,8 @@ const TechCard = ({
   name,
   image,
   description,
-  setTechnology
+  setTechnology,
+  admin
 }) => {
   const [update, setUpdate] = useState(false);
 
@@ -35,8 +36,8 @@ const TechCard = ({
       <CardTitle tag="h5">{name}</CardTitle>
       <CardText>{description}</CardText>
       <img width="110px" src={image} alt={name}/>
-      <Button color="danger" onClick={() => handleClick('delete')}>Delete Tech</Button>
-      <Button color="info" onClick={() => handleClick('update')}>{update ? 'Close Form' : 'Update Tech'}</Button>
+      {admin && <Button color="danger" onClick={() => handleClick('delete')}>Delete Tech</Button>}
+      {admin && <Button color="info" onClick={() => handleClick('update')}>{update ? 'Close Form' : 'Update Tech'}</Button>}
       {
         update && <TechForm
           formTitle='Update Tech'
@@ -45,6 +46,7 @@ const TechCard = ({
           name={name}
           image={image}
           description={description}
+          admin={admin}
         />
       }
     </Card>
@@ -56,6 +58,7 @@ TechCard.propTypes = {
   name: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
-  setTechnology: PropTypes.func.isRequired
+  setTechnology: PropTypes.func.isRequired,
+  admin: PropTypes.any
 };
 export default TechCard;

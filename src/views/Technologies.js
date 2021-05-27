@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import TechCard from '../components/TechCard';
 
-function Technology({ technology, setTechnology }) {
+function Technology({ technology, setTechnology, admin }) {
   return (
     <div className="card-container">
       {technology.map((techInfo) => (
@@ -13,6 +13,7 @@ function Technology({ technology, setTechnology }) {
           description={techInfo.description}
           image={techInfo.image}
           setTechnology={setTechnology}
+          admin={admin}
         />
       ))}
     </div>
@@ -21,7 +22,8 @@ function Technology({ technology, setTechnology }) {
 
 Technology.propTypes = {
   technology: PropTypes.array.isRequired,
-  setTechnology: PropTypes.func.isRequired
+  setTechnology: PropTypes.func.isRequired,
+  admin: PropTypes.any
 };
 
 export default Technology;
