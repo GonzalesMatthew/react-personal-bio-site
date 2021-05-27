@@ -11,19 +11,29 @@ const getProjects = () => new Promise((resolve, reject) => {
 
 const createProjects = (projObj) => new Promise((resolve, reject) => {
   axios.post(`${dbUrl}/projects.json`, projObj)
-    .then(() => resolve(getProjects()))
+    .then((response) => {
+      const fbKey = { firebaseKey: response.data.name };
+      axios.patch(`${dbUrl}/projects/${response.data.name}.json`, fbKey)
+        .then(() => {
+          getProjects().then(resolve);
+        });
+    })
     .catch((error) => reject(error));
 });
 
-const updateProjects = (firebaseKey, projObj) => new Promise((resolve, reject) => {
-  axios.patch(`${dbUrl}/projects/${firebaseKey}.json`, projObj)
-    .then(() => resolve(getProjects()))
+const updateProjects = (projObj) => new Promise((resolve, reject) => {
+  axios.patch(`${dbUrl}/projects/${projObj.firebaseKey}.json`, projObj)
+    .then(() => {
+      getProjects().then(resolve);
+    })
     .catch((error) => reject(error));
 });
 
 const deleteProjects = (firebaseKey) => new Promise((resolve, reject) => {
   axios.delete(`${dbUrl}/projects/${firebaseKey}.json`)
-    .then(() => resolve(getProjects()))
+    .then(() => {
+      getProjects().then(resolve);
+    })
     .catch((error) => reject(error));
 });
 
