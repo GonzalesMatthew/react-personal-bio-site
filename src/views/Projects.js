@@ -8,6 +8,7 @@ function Projects({ projects, setProjects }) {
       {projects.map((projectInfo) => (
         <ProjectCard
           key={projectInfo.firebaseKey}
+          firebaseKey={projectInfo.firebaseKey}
           title={projectInfo.title}
           image={projectInfo.image}
           description={projectInfo.description}
