@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ProjectCard from '../components/ProjectCard';
 
-function Projects({ projects, setProjects }) {
+function Projects({ projects, setProjects, admin }) {
   return (
     <div className="card-container">
       {projects.map((projectInfo) => (
@@ -18,6 +18,7 @@ function Projects({ projects, setProjects }) {
           loom={projectInfo.loom}
           type={projectInfo.type}
           setProjects={setProjects}
+          admin={admin}
         />
       ))}
     </div>
@@ -26,7 +27,8 @@ function Projects({ projects, setProjects }) {
 
 Projects.propTypes = {
   projects: PropTypes.array.isRequired,
-  setProjects: PropTypes.func.isRequired
+  setProjects: PropTypes.func.isRequired,
+  admin: PropTypes.any
 };
 
 export default Projects;

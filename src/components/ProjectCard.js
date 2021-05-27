@@ -20,7 +20,8 @@ const ProjectCard = ({
   githubUrl,
   loom,
   setProjects,
-  type
+  type,
+  admin
 }) => {
   const [update, setUpdate] = useState(false);
 
@@ -53,8 +54,8 @@ const ProjectCard = ({
       <Button color="info">
         <a href={githubUrl}>GitHub</a>
       </Button>
-      <Button color="danger" onClick={() => handleClick('delete')}>Delete Project</Button>
-      <Button color="info" onClick={() => handleClick('update')}>{update ? 'Close Form' : 'Update Project'}</Button>
+      {admin && <Button color="danger" onClick={() => handleClick('delete')}>Delete Project</Button>}
+      {admin && <Button color="info" onClick={() => handleClick('update')}>{update ? 'Close Form' : 'Update Project'}</Button>}
       {
         update && <ProjectForm
           formTitle='Update Project'
@@ -86,6 +87,7 @@ ProjectCard.propTypes = {
   githubUrl: PropTypes.string.isRequired,
   loom: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
-  setProjects: PropTypes.func.isRequired
+  setProjects: PropTypes.func.isRequired,
+  admin: PropTypes.any
 };
 export default ProjectCard;

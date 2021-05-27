@@ -12,7 +12,7 @@ import {
 } from 'reactstrap';
 import { signInUser, signOutUser } from '../helpers/auth';
 
-const NavBar = ({ admin }) => {
+const NavBar = ({ admin, user }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
@@ -37,9 +37,9 @@ const NavBar = ({ admin }) => {
           <Nav className="mr-auto" navbar>
             <NavItem>
               {
-                admin
+                (admin || user)
                   ? <Button color='info' onClick={signOutUser}>Thank you!</Button>
-                  : <Button color='info' onClick={signInUser}>Share Google Info</Button>
+                  : <Button color='info' onClick={signInUser}>Share Google Contact Info</Button>
               }
             </NavItem>
             <NavItem>
@@ -63,7 +63,8 @@ const NavBar = ({ admin }) => {
 };
 
 NavBar.propTypes = {
-  admin: PropTypes.any
+  admin: PropTypes.any,
+  user: PropTypes.any
 };
 
 export default NavBar;

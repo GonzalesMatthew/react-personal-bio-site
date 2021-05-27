@@ -39,8 +39,8 @@ export default function Routes({
     <div>
       <Switch>
         <Route exact path='/' component={Home} />
-        <Route exact path='/portfolio' component={() => <Projects projects={projects} setProjects={setProjects}/>} />
-        <Route exact path='/technology' component={() => <Technology technology={technology} setTechnology={setTechnology}/>} />
+        <Route exact path='/portfolio' component={() => <Projects projects={projects} setProjects={setProjects} admin={admin}/>} />
+        <Route exact path='/technology' component={() => <Technology technology={technology} setTechnology={setTechnology} admin={admin}/>} />
         <Route exact path='/contact' component={Contact} />
         <PrivateRoute
           exact path='/project-add'
