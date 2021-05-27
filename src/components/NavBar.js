@@ -39,7 +39,7 @@ const NavBar = ({ admin }) => {
               {
                 admin
                   ? <Button color='info' onClick={signOutUser}>Thank you!</Button>
-                  : <Button color='info' onClick={signInUser}>Share Google Info</Button>
+                  : <Button color='info' onClick={signInUser}>Share Google Contact Info</Button>
               }
             </NavItem>
             <NavItem>
