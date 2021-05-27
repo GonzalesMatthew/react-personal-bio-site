@@ -21,7 +21,6 @@ const TechCard = ({
   const handleClick = (type) => {
     switch (type) {
       case 'update':
-        // updateTechnology(firebaseKey).then(setTechnology);
         setUpdate((prevState) => !prevState);
         break;
       case 'delete':
