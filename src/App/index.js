@@ -5,7 +5,7 @@ import firebaseConfig from '../helpers/apiKeys';
 import { getProjects } from '../helpers/data/ProjectData';
 import { getTechnology } from '../helpers/data/TechnologyData';
 import {
-  // checkUser,
+  checkUser,
   createUser
 } from '../helpers/data/UserData';
 import Routes from '../helpers/Routes';
@@ -34,17 +34,15 @@ function App() {
           uid: authed.uid,
           email: authed.email
         };
+        checkUser(authed.uid).then((response) => {
+          if (Object.values(response.data).length === 0) {
+            createUser(userInfoObj).then((resp) => setUser(resp));
+          } else {
+            setUser(userInfoObj);
+          }
+        });
+      } else if ((admin || admin === null) || (user || user === null)) {
         setAdmin(false);
-        setUser(userInfoObj);
-        // checkUser(userInfoObj).then((resp) => {
-        //   if (resp === null) {
-        //     createUser(userInfoObj);
-        //   }
-        // });
-        createUser(userInfoObj);
-      } else if (admin || admin === null) {
-        setAdmin(false);
-      } else if (user || user === null) {
         setUser(false);
       }
     });
