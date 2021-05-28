@@ -3,9 +3,9 @@ import firebaseConfig from '../apiKeys';
 
 const dbUrl = firebaseConfig.databaseURL;
 
-const checkUser = (userObj) => new Promise((resolve, reject) => {
-  axios.get(`${dbUrl}/users.json?orderBy="uid"&equalTo="${userObj.uid}"`)
-    .then((response) => resolve(response.data))
+const checkUser = (uid) => new Promise((resolve, reject) => {
+  axios.get(`${dbUrl}/users.json?orderBy="uid"&equalTo="${uid}"`)
+    .then((response) => resolve(response))
     .catch((error) => reject(error));
 });
 
