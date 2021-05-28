@@ -2,9 +2,8 @@ import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import {
   Card,
-  CardText,
-  CardTitle,
-  Button
+  Button,
+  Tooltip
 } from 'reactstrap';
 import { deleteTechnology } from '../helpers/data/TechnologyData';
 import TechForm from './forms/TechForm';
@@ -18,6 +17,9 @@ const TechCard = ({
   admin
 }) => {
   const [update, setUpdate] = useState(false);
+  const [tooltipOpen, setTooltipOpen] = useState(false);
+
+  const toggle = () => setTooltipOpen(!tooltipOpen);
 
   const handleClick = (type) => {
     switch (type) {
@@ -32,10 +34,12 @@ const TechCard = ({
     }
   };
   return (
-    <Card body>
-      <CardTitle tag="h5">{name}</CardTitle>
-      <CardText>{description}</CardText>
-      <img width="110px" src={image} alt={name}/>
+    <Card body width="120px" padding="10px">
+      <img id={firebaseKey} width="110px" src={image} alt={name}/>
+      <Tooltip isOpen={tooltipOpen} target={firebaseKey} toggle={toggle}>
+        <h5>{name}</h5>
+        <p>{description}</p>
+      </Tooltip>
       {admin && <Button color="danger" onClick={() => handleClick('delete')}>Delete Tech</Button>}
       {admin && <Button color="info" onClick={() => handleClick('update')}>{update ? 'Close Form' : 'Update Tech'}</Button>}
       {
