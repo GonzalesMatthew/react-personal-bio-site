@@ -9,7 +9,6 @@ import Home from '../views/Home';
 import NotFound from '../views/NotFound';
 import Projects from '../views/Projects';
 import Technology from '../views/Technologies';
-import Contact from '../views/Contact';
 import ProjectsAdd from '../views/ProjectsAdd';
 import TechnologyAdd from '../views/TechnologyAdd';
 
@@ -41,7 +40,6 @@ export default function Routes({
         <Route exact path='/' component={Home} />
         <Route exact path='/portfolio' component={() => <Projects projects={projects} setProjects={setProjects} admin={admin}/>} />
         <Route exact path='/technology' component={() => <Technology technology={technology} setTechnology={setTechnology} admin={admin}/>} />
-        <Route exact path='/contact' component={Contact} />
         <PrivateRoute
           exact path='/project-add'
           admin={admin}
@@ -52,7 +50,7 @@ export default function Routes({
           admin={admin}
           component={() => <TechnologyAdd setTechnology={setTechnology}/>}
         />
-        <Route path='*' component = {NotFound} />
+        <Route path='*' component={NotFound} />
       </Switch>
     </div>
   );

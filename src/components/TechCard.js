@@ -34,9 +34,9 @@ const TechCard = ({
     }
   };
   return (
-    <Card body width="120px" padding="10px">
+    <Card body padding="10px">
       <img id={firebaseKey} width="110px" src={image} alt={name}/>
-      <Tooltip isOpen={tooltipOpen} target={firebaseKey} toggle={toggle}>
+      <Tooltip isOpen={tooltipOpen} placement="right-start" target={firebaseKey} toggle={toggle}>
         <h5>{name}</h5>
         <p>{description}</p>
       </Tooltip>
