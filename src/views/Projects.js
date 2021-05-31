@@ -1,27 +1,35 @@
 import React from 'react';
+import { Container, Paper } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import ProjectCard from '../components/ProjectCard';
 
 function Projects({ projects, setProjects, admin }) {
   return (
-    <div className="card-container">
+    <Container className="card-container">
+      <Paper elevation={3} variant="outlined">
       {projects.map((projectInfo) => (
-        <ProjectCard
-          key={projectInfo.firebaseKey}
-          firebaseKey={projectInfo.firebaseKey}
-          title={projectInfo.title}
-          image={projectInfo.image}
-          description={projectInfo.description}
-          technologiesUsed={projectInfo.technologiesUsed}
-          netlify={projectInfo.netlify}
-          githubUrl={projectInfo.githubUrl}
-          loom={projectInfo.loom}
-          type={projectInfo.type}
-          setProjects={setProjects}
-          admin={admin}
-        />
+        <Container
+          className="card-container"
+          maxWidth="sm"
+          key={projectInfo.firebaseKey}>
+          <ProjectCard
+            key={projectInfo.firebaseKey}
+            firebaseKey={projectInfo.firebaseKey}
+            title={projectInfo.title}
+            image={projectInfo.image}
+            description={projectInfo.description}
+            technologiesUsed={projectInfo.technologiesUsed}
+            netlify={projectInfo.netlify}
+            githubUrl={projectInfo.githubUrl}
+            loom={projectInfo.loom}
+            type={projectInfo.type}
+            setProjects={setProjects}
+            admin={admin}
+          />
+        </Container>
       ))}
-    </div>
+      </Paper>
+    </Container>
   );
 }
 

@@ -1,11 +1,14 @@
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
+// import {
+//   Button,
+//   Card,
+//   CardText,
+//   CardTitle,
+// } from 'reactstrap';
 import {
-  Button,
-  Card,
-  CardText,
-  CardTitle,
-} from 'reactstrap';
+  Card, CardHeader, CardMedia, CardContent, Button
+} from '@material-ui/core';
 import { deleteProjects } from '../helpers/data/ProjectData';
 import ProjectForm from './forms/ProjectForm';
 
@@ -39,17 +42,24 @@ const ProjectCard = ({
   };
 
   return (
-    <Card body>
-      <CardTitle tag="h5">{title}</CardTitle>
-      <CardText>{description}</CardText>
-      <CardText>Tech: {technologiesUsed}</CardText>
-      <CardText>Type: {type}</CardText>
-      <img src={image} alt={title}/>
+    <Card className="project-card">
+      <CardHeader
+        title={title}
+        subheader={`Tech: ${technologiesUsed}`}
+      />
+      <CardMedia
+        component="img"
+        alt={title}
+        image={image}
+        title={title}
+      />
+      <CardContent>{type} Project</CardContent>
+      <CardContent>{description}</CardContent>
       <Button color="info">
         <a href={loom}>Video</a>
       </Button>
       <Button color="info">
-        <a href={netlify}>Live</a>
+        <a href={netlify}>Live App</a>
       </Button>
       <Button color="info">
         <a href={githubUrl}>GitHub</a>

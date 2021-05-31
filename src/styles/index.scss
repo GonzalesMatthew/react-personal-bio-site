@@ -2,5 +2,21 @@
 @import 'variables';
 
 body {
+  background-image: url(http://bcbstwelltuned.com/wp-content/uploads/2016/09/fallcreekfalls.jpg);
   background-color: $favColor;
+}
+
+.about-me {
+  margin-top: 20px
+}
+
+.contact-icons {
+  width: 35px
+}
+.contact-icons2 {
+  width: 40px
+}
+
+.card-container {
+  margin: 20px 0px
 }

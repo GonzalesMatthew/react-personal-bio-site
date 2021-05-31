@@ -11,6 +11,7 @@ import {
   Button
 } from 'reactstrap';
 import { signInUser, signOutUser } from '../helpers/auth';
+import Contact from './Contact';
 
 const NavBar = ({ admin, user }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -51,11 +52,12 @@ const NavBar = ({ admin, user }) => {
             <NavItem>
               <Link className="nav-link" to="/technology">Technology</Link>
             </NavItem>
-            <NavItem>
+            {/* <NavItem>
               <Link className="nav-link" to="/contact">Contact</Link>
-            </NavItem>
+            </NavItem> */}
               { admin && authenticatedLinks()}
           </Nav>
+          <Contact></Contact>
         </Collapse>
       </Navbar>
     </div>
