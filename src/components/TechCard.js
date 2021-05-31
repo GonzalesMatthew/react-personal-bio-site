@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import {
-  Card,
+  // Card,
   Button,
   Tooltip
 } from 'reactstrap';
@@ -34,9 +34,9 @@ const TechCard = ({
     }
   };
   return (
-    <Card body padding="10px">
+    <div>
       <img id={firebaseKey} width="110px" src={image} alt={name}/>
-      <Tooltip isOpen={tooltipOpen} placement="right-start" target={firebaseKey} toggle={toggle}>
+      <Tooltip isOpen={tooltipOpen} placement="bottom-start" target={firebaseKey} toggle={toggle}>
         <h5>{name}</h5>
         <p>{description}</p>
       </Tooltip>
@@ -53,7 +53,7 @@ const TechCard = ({
           admin={admin}
         />
       }
-    </Card>
+    </div>
   );
 };
 

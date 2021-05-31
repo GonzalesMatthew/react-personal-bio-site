@@ -5,10 +5,11 @@ import ProjectCard from '../components/ProjectCard';
 
 function Projects({ projects, setProjects, admin }) {
   return (
-    <Container>
+    <Container className="card-container">
       <Paper elevation={3} variant="outlined">
       {projects.map((projectInfo) => (
         <Container
+          className="card-container"
           maxWidth="sm"
           key={projectInfo.firebaseKey}>
           <ProjectCard
