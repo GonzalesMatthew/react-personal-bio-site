@@ -7,8 +7,8 @@ import {
 import PropTypes from 'prop-types';
 import Home from '../views/Home';
 import NotFound from '../views/NotFound';
-import Projects from '../views/Projects';
-import Technology from '../views/Technologies';
+import Projects from '../components/Projects';
+import Technology from '../components/Technologies';
 import ProjectsAdd from '../views/ProjectsAdd';
 import TechnologyAdd from '../views/TechnologyAdd';
 
@@ -37,7 +37,7 @@ export default function Routes({
   return (
     <div>
       <Switch>
-        <Route exact path='/' component={Home} />
+        <Route exact path='/' component={() => <Home projects={projects} setProjects={setProjects} admin={admin} technology={technology} setTechnology={setTechnology}/>} />
         <Route exact path='/portfolio' component={() => <Projects projects={projects} setProjects={setProjects} admin={admin}/>} />
         <Route exact path='/technology' component={() => <Technology technology={technology} setTechnology={setTechnology} admin={admin}/>} />
         <PrivateRoute

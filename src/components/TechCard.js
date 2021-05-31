@@ -40,8 +40,8 @@ const TechCard = ({
         <h5>{name}</h5>
         <p>{description}</p>
       </Tooltip>
-      {admin && <Button color="danger" onClick={() => handleClick('delete')}>Delete Tech</Button>}
-      {admin && <Button color="info" onClick={() => handleClick('update')}>{update ? 'Close Form' : 'Update Tech'}</Button>}
+      {admin && <Button variant="contained" color="secondary" onClick={() => handleClick('delete')}>Delete Tech</Button>}
+      {admin && <Button variant="contained" color="primary" onClick={() => handleClick('update')}>{update ? 'Close Form' : 'Update Tech'}</Button>}
       {
         update && <TechForm
           formTitle='Update Tech'
