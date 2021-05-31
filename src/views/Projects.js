@@ -1,22 +1,15 @@
 import React from 'react';
-import styled from 'styled-components';
+import { Container, Paper } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import ProjectCard from '../components/ProjectCard';
 
-const Div0 = styled.div`
-  display:flex;
-  flex-wrap: wrap;
-`;
-// const Div1 = styled.div`
-//   color: white;
-//   background-color: #b7cfeb;
-//   padding: 40px;
-// `;
 function Projects({ projects, setProjects, admin }) {
   return (
-    <Div0 className="card-container">
+    <Container>
+      <Paper elevation={3} variant="outlined">
       {projects.map((projectInfo) => (
-        <div
+        <Container
+          maxWidth="sm"
           key={projectInfo.firebaseKey}>
           <ProjectCard
             key={projectInfo.firebaseKey}
@@ -32,9 +25,10 @@ function Projects({ projects, setProjects, admin }) {
             setProjects={setProjects}
             admin={admin}
           />
-        </div>
+        </Container>
       ))}
-    </Div0>
+      </Paper>
+    </Container>
   );
 }
 
