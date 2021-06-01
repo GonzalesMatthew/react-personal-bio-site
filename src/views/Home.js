@@ -1,8 +1,10 @@
 import React from 'react';
+import { Container, Paper } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import AboutMe from '../components/AboutMe';
 import Projects from '../components/Projects';
 import Technology from '../components/Technologies';
+import Contact from '../components/Contact';
 
 function Home({
   projects, setProjects, admin, technology, setTechnology
@@ -18,6 +20,12 @@ function Home({
         admin={admin}
         technology={technology}
         setTechnology={setTechnology}/>
+      <Container className='card-container' maxWidth='md'>
+        <h1 className='heading1'>Contact</h1>
+        <Paper className='paper' elevation={3} variant='outlined'>
+          <Contact/>
+        </Paper>
+      </Container>
     </>
   );
 }

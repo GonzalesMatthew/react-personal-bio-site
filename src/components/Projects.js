@@ -5,7 +5,7 @@ import ProjectCard from './ProjectCard';
 
 function Projects({ projects, setProjects, admin }) {
   return (
-    <Container className="card-container" maxWidth='md'>
+    <Container id='portfolio' className="card-container" maxWidth='md'>
       <h1 className="heading1">Portfolio</h1>
       <Paper className='paper' elevation={3} variant="outlined">
       {projects.map((projectInfo) => (
