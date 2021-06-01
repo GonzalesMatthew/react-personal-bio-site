@@ -17,4 +17,4 @@
 ### List of contributors and links to their GH profiles
 @GonzalesMatthew
 ### Link to Loom video walkthrough of your app
-[App-Walkthrough Video](https://www.loom.com/share/01917e55658a4d34a08381208489cf11)
+[App-Walkthrough Video](https://www.loom.com/share/24e24eecfd944bcb92882d8602ae7fcc)
