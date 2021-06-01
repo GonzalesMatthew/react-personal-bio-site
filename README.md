@@ -1,4 +1,6 @@
 # My Personal Bio Site
+[![Netlify Status](https://api.netlify.com/api/v1/badges/fe9bdc98-2984-442b-8ebb-26678b138f3f/deploy-status)](https://app.netlify.com/sites/matthewggonzales/deploys)
+  
   Welcome to my personal bio site which shares a blurb about who I am, why I love developing, my portfolio, and the technologies I know.
 ### Link to the deployed project
   [Deployed Project](https://matthewggonzales.com)
