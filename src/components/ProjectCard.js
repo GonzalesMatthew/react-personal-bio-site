@@ -55,17 +55,17 @@ const ProjectCard = ({
       />
       <CardContent>{type} Project</CardContent>
       <CardContent>{description}</CardContent>
-      <Button color="info">
+      <Button color="default">
         <a href={loom}>Video</a>
       </Button>
-      <Button color="info">
+      <Button color="default">
         <a href={netlify}>Live App</a>
       </Button>
-      <Button color="info">
+      <Button color="default">
         <a href={githubUrl}>GitHub</a>
       </Button>
-      {admin && <Button color="danger" onClick={() => handleClick('delete')}>Delete Project</Button>}
-      {admin && <Button color="info" onClick={() => handleClick('update')}>{update ? 'Close Form' : 'Update Project'}</Button>}
+      {admin && <Button variant="contained" color="secondary" onClick={() => handleClick('delete')}>Delete Project</Button>}
+      {admin && <Button variant="contained" color="primary" onClick={() => handleClick('update')}>{update ? 'Close Form' : 'Update Project'}</Button>}
       {
         update && <ProjectForm
           formTitle='Update Project'

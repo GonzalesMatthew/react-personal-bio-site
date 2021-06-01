@@ -1,10 +1,9 @@
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import {
-  // Card,
-  Button,
   Tooltip
 } from 'reactstrap';
+import { Button } from '@material-ui/core';
 import { deleteTechnology } from '../helpers/data/TechnologyData';
 import TechForm from './forms/TechForm';
 
@@ -35,13 +34,13 @@ const TechCard = ({
   };
   return (
     <div>
-      <img id={firebaseKey} width="110px" src={image} alt={name}/>
+      <img className='tech-icon' id={firebaseKey} src={image} alt={name}/>
       <Tooltip isOpen={tooltipOpen} placement="bottom-start" target={firebaseKey} toggle={toggle}>
         <h5>{name}</h5>
         <p>{description}</p>
       </Tooltip>
-      {admin && <Button color="danger" onClick={() => handleClick('delete')}>Delete Tech</Button>}
-      {admin && <Button color="info" onClick={() => handleClick('update')}>{update ? 'Close Form' : 'Update Tech'}</Button>}
+      {admin && <Button variant="contained" color="secondary" onClick={() => handleClick('delete')}>Delete Tech</Button>}
+      {admin && <Button variant="contained" color="primary" onClick={() => handleClick('update')}>{update ? 'Close Form' : 'Update Tech'}</Button>}
       {
         update && <TechForm
           formTitle='Update Tech'

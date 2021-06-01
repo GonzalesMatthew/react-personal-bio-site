@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { Link as ScrollLink } from 'react-scroll';
 import {
   Collapse,
   Navbar,
@@ -8,8 +9,9 @@ import {
   NavbarBrand,
   Nav,
   NavItem,
-  Button
+  // Button
 } from 'reactstrap';
+import { Button } from '@material-ui/core';
 import { signInUser, signOutUser } from '../helpers/auth';
 import Contact from './Contact';
 
@@ -31,7 +33,7 @@ const NavBar = ({ admin, user }) => {
 
   return (
     <div>
-      <Navbar color="light" light expand="md">
+      <Navbar id='nav-bar' color="light" light expand="md">
         <NavbarBrand>Matthew G. Gonzales</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
@@ -39,22 +41,19 @@ const NavBar = ({ admin, user }) => {
             <NavItem>
               {
                 (admin || user)
-                  ? <Button color='info' onClick={signOutUser}>Thank you!</Button>
-                  : <Button color='info' onClick={signInUser}>Share Google Contact Info</Button>
+                  ? <Button size="medium" variant="outlined" color='primary' onClick={signOutUser}>Thank you!</Button>
+                  : <Button size="medium" variant="outlined" color='primary' onClick={signInUser}>Sign Google Guestbook</Button>
               }
             </NavItem>
             <NavItem>
-              <Link className="nav-link" to="/">About Me</Link>
+              <ScrollLink className="nav-link" to="about-me">About Me</ScrollLink>
             </NavItem>
             <NavItem>
-              <Link className="nav-link" to="/portfolio">Portfolio</Link>
+              <ScrollLink className="nav-link" to="portfolio">Portfolio</ScrollLink>
             </NavItem>
             <NavItem>
-              <Link className="nav-link" to="/technology">Technology</Link>
+              <ScrollLink className="nav-link" to="technology">Technology</ScrollLink>
             </NavItem>
-            {/* <NavItem>
-              <Link className="nav-link" to="/contact">Contact</Link>
-            </NavItem> */}
               { admin && authenticatedLinks()}
           </Nav>
           <Contact></Contact>
