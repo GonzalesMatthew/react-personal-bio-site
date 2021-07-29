@@ -4,6 +4,9 @@
 body {
   background-image: url(https://firebasestorage.googleapis.com/v0/b/react-personal-bio-site.appspot.com/o/fallcreekfalls.jpeg?alt=media&token=2125f1e5-ac48-42a3-8c89-f6d8ab2fa09d);
   background-color: $favColor;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
 }
 
 .paper {
