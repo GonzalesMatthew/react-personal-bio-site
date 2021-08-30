@@ -9,6 +9,7 @@ import Home from '../views/Home';
 import NotFound from '../views/NotFound';
 import ProjectsAdd from '../views/ProjectsAdd';
 import TechnologyAdd from '../views/TechnologyAdd';
+import Blog from '../views/Blog';
 
 const PrivateRoute = ({ component: Component, admin, ...rest }) => {
   const routeChecker = (check) => (admin
@@ -29,6 +30,7 @@ export default function Routes({
     <div>
       <Switch>
         <Route exact path='/' component={() => <Home projects={projects} setProjects={setProjects} admin={admin} technology={technology} setTechnology={setTechnology}/>} />
+        <Route exact path='/blog' component={Blog}/>
         <PrivateRoute
           exact path='/project-add'
           admin={admin}
