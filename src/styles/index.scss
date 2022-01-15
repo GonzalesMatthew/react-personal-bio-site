@@ -21,10 +21,20 @@ body {
 }
 
 .about-me{
-  margin: 70px 0px
+  margin: 70px 0px;
+  padding-top: 70px;
 }
+
 .card-container {
   margin: 70px 0px
+}
+
+.portfolio {
+  padding-top: 70px;
+}
+
+.technology {
+  padding-top: 70px;
 }
 
 .heading1 {
@@ -44,4 +54,9 @@ body {
   width: 100%;
   z-index: 5;
   padding: 0;
+}
+
+.hero-pic {
+  max-height: 500px;
+  max-width: 500px;
 }
