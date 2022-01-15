@@ -4,11 +4,12 @@ import { Container, Paper } from '@material-ui/core';
 import PropTypes from 'prop-types';
 
 export default function AboutMe({ aboutMe }) {
+  console.warn(aboutMe);
   return (
     <>
       <Container id='about-me' className='about-me' maxWidth='md'>
         <h1 className="heading1">About Me</h1>
-        <Paper className='paper' elevation={3}>
+        <Paper className='about-me-color paper' elevation={3}>
           <Container>
             <Row >
               <Col className='d-flex'>
