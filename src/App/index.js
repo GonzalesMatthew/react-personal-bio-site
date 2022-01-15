@@ -2,7 +2,7 @@ import firebase from 'firebase';
 import React, { useEffect, useState } from 'react';
 import NavBar from '../components/NavBar';
 import firebaseConfig from '../helpers/apiKeys';
-import { getAboutMe } from '../helpers/data/AboutMeData';
+// import { getAboutMe } from '../helpers/data/AboutMeData';
 import { getProjects } from '../helpers/data/ProjectData';
 import { getTechnology } from '../helpers/data/TechnologyData';
 import {
@@ -14,16 +14,16 @@ import Routes from '../helpers/Routes';
 firebase.initializeApp(firebaseConfig);
 
 function App() {
-  const [aboutMe, setAboutMe] = useState([]);
+  // const [aboutMe, setAboutMe] = useState([]);
   const [projects, setProjects] = useState([]);
   const [technology, setTechnology] = useState([]);
   const [admin, setAdmin] = useState(null);
   const [user, setUser] = useState(null);
 
   useEffect(() => {
+    // getAboutMe().then(setAboutMe);
     getProjects().then(setProjects);
     getTechnology().then(setTechnology);
-    getAboutMe().then(setAboutMe);
   }, []);
 
   useEffect(() => {
@@ -61,12 +61,11 @@ function App() {
     />
     <Routes
       admin={admin}
-      aboutMe={aboutMe}
       projects={projects}
       technology={technology}
       setProjects={setProjects}
       setTechnology={setTechnology}
-      setAboutMe={setAboutMe}
+      // setAboutMe={setAboutMe}
     />
   </>
   );

@@ -57,6 +57,7 @@ body {
 }
 
 .hero-pic {
-  max-height: 500px;
-  max-width: 500px;
+  object-fit: cover;
+  width:400px;
+  height:400px;
 }

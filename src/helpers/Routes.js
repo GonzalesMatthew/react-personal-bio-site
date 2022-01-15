@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Route,
   Switch,
@@ -11,6 +11,7 @@ import ProjectsAdd from '../views/ProjectsAdd';
 import TechnologyAdd from '../views/TechnologyAdd';
 import Blog from '../views/Blog';
 import AboutMeUpdate from '../views/AboutMeUpdate';
+import { getAboutMe } from './data/AboutMeData';
 
 const PrivateRoute = ({ component: Component, admin, ...rest }) => {
   const routeChecker = (check) => (admin
@@ -25,8 +26,14 @@ PrivateRoute.propTypes = {
 };
 
 export default function Routes({
-  aboutMe, projects, technology, setAboutMe, setProjects, setTechnology, admin
+  projects, technology, setProjects, setTechnology, admin
 }) {
+  const [aboutMe, setAboutMe] = useState([]);
+
+  useEffect(() => {
+    getAboutMe().then(setAboutMe);
+  }, []);
+
   return (
     <div>
       <Switch>
