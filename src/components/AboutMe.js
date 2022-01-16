@@ -1,14 +1,18 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Row, Col } from 'reactstrap';
-import { Container, Paper } from '@material-ui/core';
+import { Button, Container, Paper } from '@material-ui/core';
 import PropTypes from 'prop-types';
+import { getAboutMe } from '../helpers/data/AboutMeData';
+import AboutCard from './Cards/AboutCard';
 
-export default function AboutMe({ aboutMe }) {
+export default function AboutMe({ admin }) {
+  const [aboutMe, setAboutMe] = useState([]);
   useEffect(() => {
-    if (aboutMe === undefined) {
-      console.warn(aboutMe);
-    }
+    getAboutMe().then(setAboutMe);
   }, []);
+
+  // const [toggleAboutForm, setToggleAboutForm] = useState(false);
+  // const toggleAdd = () => setToggleAboutForm(!toggleAboutForm);
 
   return (
     <>
@@ -21,15 +25,16 @@ export default function AboutMe({ aboutMe }) {
                 <img src='https://firebasestorage.googleapis.com/v0/b/react-personal-bio-site.appspot.com/o/snapshot2.png?alt=media&token=a9aa1fc6-3a20-4cdf-a30a-1e4cfb2e737a' alt='picture of Matthew G. Gonzales' className='m-auto hero-pic img-thumbnail rounded-circle'></img>
               </Col>
               <Col>
-                  <p>
-                    {aboutMe[0].paragraph1}
-                  </p>
-                  <p>
-                    {aboutMe[0].paragraph2}
-                  </p>
-                  <p>
-                    {aboutMe[0].paragraph3}
-                  </p>
+                  {aboutMe.map((blurb) => (
+                    <AboutCard
+                      key={blurb.firebaseKey}
+                      firebaseKey={blurb.firebaseKey}
+                      desc={blurb.desc}
+                      admin={admin}
+                      setAboutMe={setAboutMe}
+                    />
+                  ))}
+                  {admin && <Button>Add</Button>}
               </Col>
             </Row>
           </Container>
@@ -40,5 +45,6 @@ export default function AboutMe({ aboutMe }) {
 }
 
 AboutMe.propTypes = {
-  aboutMe: PropTypes.array.isRequired
+  admin: PropTypes.any,
+  aboutMe: PropTypes.array
 };

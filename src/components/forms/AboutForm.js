@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { createProjects, updateProjects } from '../../helpers/data/ProjectData';
 
-export default function AboutMeForm({
+export default function AboutForm({
   formTitle, setAboutMe
 }) {
   // const [aboutObj, setAboutObj] = useState({
@@ -122,7 +122,7 @@ export default function AboutMeForm({
   );
 }
 
-AboutMeForm.propTypes = {
+AboutForm.propTypes = {
   formTitle: PropTypes.string.isRequired,
-  setAboutMe: PropTypes.func.isRequired,
+  setAboutMe: PropTypes.func,
 };

@@ -4,8 +4,8 @@ import {
   Tooltip
 } from 'reactstrap';
 import { Button } from '@material-ui/core';
-import { deleteTechnology } from '../helpers/data/TechnologyData';
-import TechForm from './forms/TechForm';
+import TechForm from '../Forms/TechForm';
+import { deleteTechnology } from '../../helpers/data/TechnologyData';
 
 const TechCard = ({
   firebaseKey,

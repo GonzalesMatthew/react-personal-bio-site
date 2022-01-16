@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import {
   Route,
   Switch,
@@ -10,7 +10,6 @@ import NotFound from '../views/NotFound';
 import ProjectsAdd from '../views/ProjectsAdd';
 import TechnologyAdd from '../views/TechnologyAdd';
 import Blog from '../views/Blog';
-import { getAboutMe } from './data/AboutMeData';
 
 const PrivateRoute = ({ component: Component, admin, ...rest }) => {
   const routeChecker = (check) => (admin
@@ -27,16 +26,15 @@ PrivateRoute.propTypes = {
 export default function Routes({
   projects, technology, setProjects, setTechnology, admin
 }) {
-  const [aboutMe, setAboutMe] = useState([]);
-
-  useEffect(() => {
-    getAboutMe().then(setAboutMe);
-  }, []);
-
   return (
     <div>
       <Switch>
-        <Route exact path='/' component={() => <Home aboutMe={aboutMe} projects={projects} setProjects={setProjects} admin={admin} technology={technology} setTechnology={setTechnology}/>} />
+        <Route
+          exact path='/'
+          component={() => <Home
+            projects={projects} setProjects={setProjects}
+            admin={admin} technology={technology}
+            setTechnology={setTechnology}/>} />
         <Route exact path='/blog' component={Blog}/>
         <PrivateRoute
           exact path='/project-add'
@@ -56,10 +54,8 @@ export default function Routes({
 
 Routes.propTypes = {
   admin: PropTypes.any,
-  aboutMe: PropTypes.array.isRequired,
   projects: PropTypes.array.isRequired,
   technology: PropTypes.array.isRequired,
-  setAboutMe: PropTypes.func.isRequired,
   setProjects: PropTypes.func.isRequired,
   setTechnology: PropTypes.func.isRequired
 };

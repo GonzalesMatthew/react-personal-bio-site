@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Container, Paper, Box } from '@material-ui/core';
-import TechCard from './TechCard';
+import TechCard from './Cards/TechCard';
 
 function Technology({ technology, setTechnology, admin }) {
   return (
