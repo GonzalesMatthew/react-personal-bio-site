@@ -4,8 +4,8 @@ import {
   Tooltip
 } from 'reactstrap';
 import { Button } from '@material-ui/core';
-import { deleteTechnology } from '../helpers/data/TechnologyData';
-import TechForm from './forms/TechForm';
+import TechForm from '../Forms/TechForm';
+import { deleteTechnology } from '../../helpers/data/TechnologyData';
 
 const TechCard = ({
   firebaseKey,
@@ -26,7 +26,9 @@ const TechCard = ({
         setUpdate((prevState) => !prevState);
         break;
       case 'delete':
-        deleteTechnology(firebaseKey).then(setTechnology);
+        // eslint-disable-next-line
+        const result = window.confirm('Delete this tech card?');
+        if (result) deleteTechnology(firebaseKey).then(setTechnology);
         break;
       default:
         break;

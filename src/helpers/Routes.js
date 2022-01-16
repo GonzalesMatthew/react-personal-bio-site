@@ -9,6 +9,7 @@ import Home from '../views/Home';
 import NotFound from '../views/NotFound';
 import ProjectsAdd from '../views/ProjectsAdd';
 import TechnologyAdd from '../views/TechnologyAdd';
+import Blog from '../views/Blog';
 
 const PrivateRoute = ({ component: Component, admin, ...rest }) => {
   const routeChecker = (check) => (admin
@@ -23,12 +24,22 @@ PrivateRoute.propTypes = {
 };
 
 export default function Routes({
-  projects, technology, setProjects, setTechnology, admin
+  projects, technology, setProjects, setTechnology, admin, user,
+  aboutMe, setAboutMe
 }) {
   return (
     <div>
       <Switch>
-        <Route exact path='/' component={() => <Home projects={projects} setProjects={setProjects} admin={admin} technology={technology} setTechnology={setTechnology}/>} />
+        <Route
+          exact path='/'
+          component={() => <Home
+            projects={projects} setProjects={setProjects}
+            user={user}
+            aboutMe={aboutMe}
+            setAboutMe={setAboutMe}
+            admin={admin} technology={technology}
+            setTechnology={setTechnology}/>} />
+        <Route exact path='/blog' component={Blog}/>
         <PrivateRoute
           exact path='/project-add'
           admin={admin}
@@ -47,8 +58,11 @@ export default function Routes({
 
 Routes.propTypes = {
   admin: PropTypes.any,
+  user: PropTypes.any,
+  aboutMe: PropTypes.array,
   projects: PropTypes.array.isRequired,
   technology: PropTypes.array.isRequired,
+  setAboutMe: PropTypes.func,
   setProjects: PropTypes.func.isRequired,
   setTechnology: PropTypes.func.isRequired
 };

@@ -9,8 +9,8 @@ import React, { useState } from 'react';
 import {
   Card, CardHeader, CardMedia, CardContent, Button
 } from '@material-ui/core';
-import { deleteProjects } from '../helpers/data/ProjectData';
-import ProjectForm from './forms/ProjectForm';
+import ProjectForm from '../Forms/ProjectForm';
+import { deleteProjects } from '../../helpers/data/ProjectData';
 
 const ProjectCard = ({
   firebaseKey,
@@ -34,7 +34,9 @@ const ProjectCard = ({
         setUpdate((prevState) => !prevState);
         break;
       case 'delete':
-        deleteProjects(firebaseKey).then(setProjects);
+        // eslint-disable-next-line
+        const result = window.confirm('Delete this project card?');
+        if (result) deleteProjects(firebaseKey).then(setProjects);
         break;
       default:
         break;

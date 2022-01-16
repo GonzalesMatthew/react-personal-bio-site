@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, Paper } from '@material-ui/core';
 import PropTypes from 'prop-types';
-import ProjectForm from '../components/forms/ProjectForm';
+import ProjectForm from '../components/Forms/ProjectForm';
 
 export default function ProjectsAdd({ setProjects }) {
   return (

@@ -1,25 +1,53 @@
 import React from 'react';
-import { Container, Paper } from '@material-ui/core';
+import { Row, Col } from 'reactstrap';
+import { Button, Container, Paper } from '@material-ui/core';
+import PropTypes from 'prop-types';
+// import { getAboutMe } from '../helpers/data/AboutMeData';
+import AboutCard from './Cards/AboutCard';
 
-export default function AboutMe() {
+export default function AboutMe({
+  admin, aboutMe, setAboutMe
+}) {
+  // const [aboutMe, setAboutMe] = useState([]);
+  // useEffect(() => {
+  //   getAboutMe().then(setAboutMe);
+  // }, []);
+
+  // const [toggleAboutForm, setToggleAboutForm] = useState(false);
+  // const toggleAdd = () => setToggleAboutForm(!toggleAboutForm);
+
   return (
     <>
-    <Container id='about-me' className='about-me' maxWidth='md'>
-      <h1 className="heading1">About Me</h1>
-      <Paper className='paper' elevation={3}>
-        <Container>
-          <p>
-            Hello, my name is Matthew Gonzales. I have been an analyst since I graduated from university, however I always felt I could be doing something more creative -- especially since the creative parts of analytics are my most favorite. So I decided to apply to NSS where my new journey as a software developer now begins.
-          </p>
-          <p>
-            I am glad I embarked on this journey as  I find my fellow developers to be amazing people to work with that also love contributing meaningful code to society. I feel my best skill as a developer is seeing the big picture and making an effective plan to get the job done quickly, accurately, and effectively. Aside from that I love the logical aspect of the work followed by the simple enjoyment of making apps pop through styling.
-          </p>
-          <p>
-            Some of my favorite hobbies include composing music, hiking, and traveling. I also enjoy watching mixed martial arts and F1 racing, cooking, studying financial markets, gardening, and decorating my home. Stay tuned because I will be opening a blog section to talk about some of these things.
-          </p>
-        </Container>
-      </Paper>
-    </Container>
-  </>
+      <Container id='about-me' className='about-me' maxWidth='md'>
+        <h1 className="heading1">About Me</h1>
+        <Paper className='about-me-color paper' elevation={3}>
+          <Container>
+            <Row >
+              <Col className='d-flex'>
+                <img src='https://firebasestorage.googleapis.com/v0/b/react-personal-bio-site.appspot.com/o/snapshot2.png?alt=media&token=a9aa1fc6-3a20-4cdf-a30a-1e4cfb2e737a' alt='picture of Matthew G. Gonzales' className='m-auto hero-pic img-thumbnail rounded-circle'></img>
+              </Col>
+              <Col>
+                  {aboutMe.map((blurb) => (
+                    <AboutCard
+                      key={blurb.firebaseKey}
+                      firebaseKey={blurb.firebaseKey}
+                      desc={blurb.desc}
+                      admin={admin}
+                      setAboutMe={setAboutMe}
+                    />
+                  ))}
+                  {admin && <Button>Add</Button>}
+              </Col>
+            </Row>
+          </Container>
+        </Paper>
+      </Container>
+    </>
   );
 }
+
+AboutMe.propTypes = {
+  admin: PropTypes.any,
+  aboutMe: PropTypes.array,
+  setAboutMe: PropTypes.func
+};

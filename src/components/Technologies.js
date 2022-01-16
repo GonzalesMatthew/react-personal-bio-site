@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Container, Paper, Box } from '@material-ui/core';
-import TechCard from './TechCard';
+import TechCard from './Cards/TechCard';
 
 function Technology({ technology, setTechnology, admin }) {
   return (
-    <Container id='technology' className="card-container" maxWidth='md'>
+    <Container id='technology' className="technology card-container" maxWidth='md'>
       <h1 className='heading1'>Technology</h1>
       <Paper className='paper' elevation={3} variant="outlined">
         <Box display="flex" flexWrap="wrap" flexDirection="row">

@@ -1,13 +1,13 @@
 import React from 'react';
 import { Container, Paper } from '@material-ui/core';
 import PropTypes from 'prop-types';
-import ProjectCard from './ProjectCard';
+import ProjectCard from './Cards/ProjectCard';
 
 function Projects({ projects, setProjects, admin }) {
   return (
-    <Container id='portfolio' className="card-container" maxWidth='md'>
+    <Container id='portfolio' className='portfolio card-container' maxWidth='md'>
       <h1 className="heading1">Portfolio</h1>
-      <Paper className='paper' elevation={3} variant="outlined">
+      <Paper className='portfolio-color paper' elevation={3} variant="outlined">
       {projects.map((projectInfo) => (
         <Container
           className="card-container"
