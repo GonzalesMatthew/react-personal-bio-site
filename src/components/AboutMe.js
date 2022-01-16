@@ -1,15 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Row, Col } from 'reactstrap';
 import { Button, Container, Paper } from '@material-ui/core';
 import PropTypes from 'prop-types';
-import { getAboutMe } from '../helpers/data/AboutMeData';
+// import { getAboutMe } from '../helpers/data/AboutMeData';
 import AboutCard from './Cards/AboutCard';
 
-export default function AboutMe({ admin }) {
-  const [aboutMe, setAboutMe] = useState([]);
-  useEffect(() => {
-    getAboutMe().then(setAboutMe);
-  }, []);
+export default function AboutMe({
+  admin, aboutMe, setAboutMe
+}) {
+  // const [aboutMe, setAboutMe] = useState([]);
+  // useEffect(() => {
+  //   getAboutMe().then(setAboutMe);
+  // }, []);
 
   // const [toggleAboutForm, setToggleAboutForm] = useState(false);
   // const toggleAdd = () => setToggleAboutForm(!toggleAboutForm);
@@ -46,5 +48,6 @@ export default function AboutMe({ admin }) {
 
 AboutMe.propTypes = {
   admin: PropTypes.any,
-  aboutMe: PropTypes.array
+  aboutMe: PropTypes.array,
+  setAboutMe: PropTypes.func
 };

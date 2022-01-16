@@ -7,12 +7,16 @@ import Technology from '../components/Technologies';
 import Contact from '../components/Contact';
 
 function Home({
-  projects, setProjects, admin, technology, setTechnology
+  projects, setProjects, admin, technology, setTechnology, user,
+  aboutMe, setAboutMe
 }) {
   return (
     <>
       <AboutMe
         admin={admin}
+        user={user}
+        aboutMe={aboutMe}
+        setAboutMe={setAboutMe}
       />
       <Projects
         admin={admin}
@@ -34,6 +38,9 @@ function Home({
 
 Home.propTypes = {
   admin: PropTypes.any,
+  user: PropTypes.any,
+  aboutMe: PropTypes.array,
+  setAboutMe: PropTypes.func,
   projects: PropTypes.array.isRequired,
   setProjects: PropTypes.func.isRequired,
   technology: PropTypes.array.isRequired,
