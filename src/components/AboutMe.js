@@ -1,10 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Row, Col } from 'reactstrap';
 import { Container, Paper } from '@material-ui/core';
 import PropTypes from 'prop-types';
 
 export default function AboutMe({ aboutMe }) {
-  console.warn(aboutMe);
+  useEffect(() => {
+    if (aboutMe === undefined) {
+      console.warn(aboutMe);
+    }
+  }, []);
+
   return (
     <>
       <Container id='about-me' className='about-me' maxWidth='md'>

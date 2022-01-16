@@ -26,7 +26,9 @@ const TechCard = ({
         setUpdate((prevState) => !prevState);
         break;
       case 'delete':
-        deleteTechnology(firebaseKey).then(setTechnology);
+        // eslint-disable-next-line
+        const result = window.confirm('Delete this tech card?');
+        if (result) deleteTechnology(firebaseKey).then(setTechnology);
         break;
       default:
         break;

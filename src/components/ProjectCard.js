@@ -34,7 +34,9 @@ const ProjectCard = ({
         setUpdate((prevState) => !prevState);
         break;
       case 'delete':
-        deleteProjects(firebaseKey).then(setProjects);
+        // eslint-disable-next-line
+        const result = window.confirm('Delete this project card?');
+        if (result) deleteProjects(firebaseKey).then(setProjects);
         break;
       default:
         break;

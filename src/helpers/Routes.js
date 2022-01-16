@@ -10,7 +10,6 @@ import NotFound from '../views/NotFound';
 import ProjectsAdd from '../views/ProjectsAdd';
 import TechnologyAdd from '../views/TechnologyAdd';
 import Blog from '../views/Blog';
-import AboutMeUpdate from '../views/AboutMeUpdate';
 import { getAboutMe } from './data/AboutMeData';
 
 const PrivateRoute = ({ component: Component, admin, ...rest }) => {
@@ -39,11 +38,6 @@ export default function Routes({
       <Switch>
         <Route exact path='/' component={() => <Home aboutMe={aboutMe} projects={projects} setProjects={setProjects} admin={admin} technology={technology} setTechnology={setTechnology}/>} />
         <Route exact path='/blog' component={Blog}/>
-        <PrivateRoute
-          exact path='/aboutme-update'
-          admin={admin}
-          component={() => <AboutMeUpdate setAboutMe={setAboutMe}/>}
-        />
         <PrivateRoute
           exact path='/project-add'
           admin={admin}
