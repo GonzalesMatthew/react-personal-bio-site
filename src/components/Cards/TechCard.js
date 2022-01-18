@@ -4,7 +4,7 @@ import {
   Tooltip
 } from 'reactstrap';
 import { Button } from '@material-ui/core';
-import TechForm from '../Forms/TechForm';
+import TechForm from '../forms/TechForm';
 import { deleteTechnology } from '../../helpers/data/TechnologyData';
 
 const TechCard = ({

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, Paper } from '@material-ui/core';
 import PropTypes from 'prop-types';
-import ProjectCard from './Cards/ProjectCard';
+import ProjectCard from './cards/ProjectCard';
 
 function Projects({ projects, setProjects, admin }) {
   return (
