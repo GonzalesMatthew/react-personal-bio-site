@@ -2,8 +2,8 @@ import React from 'react';
 import { Row, Col } from 'reactstrap';
 import { Button, Container, Paper } from '@material-ui/core';
 import PropTypes from 'prop-types';
+import AboutCard from './AboutCard';
 // import { getAboutMe } from '../helpers/data/AboutMeData';
-import AboutCard from './cards/AboutCard';
 
 export default function AboutMe({
   admin, aboutMe, setAboutMe
