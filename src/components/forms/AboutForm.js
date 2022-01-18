@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { createProjects, updateProjects } from '../../helpers/data/ProjectData';
+// import { createProjects, updateProjects } from '../../helpers/data/ProjectData';
 
-export default function AboutForm({
-  formTitle, setAboutMe
-}) {
+export default function AboutForm() {
+  // formTitle, setAboutMe
+
   // const [aboutObj, setAboutObj] = useState({
   //   firebaseKey: firebaseKey || null,
   //   title: title || '',
@@ -18,12 +18,12 @@ export default function AboutForm({
   //   available: available || '',
   // });
 
-  const inputHandler = (e) => {
-    setAboutMe((prevState) => ({
-      ...prevState,
-      [e.target.name]: e.target.value
-    }));
-  };
+  // const inputHandler = (e) => {
+  //   setAboutMe((prevState) => ({
+  //     ...prevState,
+  //     [e.target.name]: e.target.value
+  //   }));
+  // };
 
   // const submitHandler = (e) => {
   //   e.preventDefault();

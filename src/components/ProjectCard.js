@@ -9,8 +9,8 @@ import React, { useState } from 'react';
 import {
   Card, CardHeader, CardMedia, CardContent, Button
 } from '@material-ui/core';
-import { deleteProjects } from '../../helpers/data/ProjectData';
-import ProjectForm from '../Forms/ProjectForm';
+import { deleteProjects } from '../helpers/data/ProjectData';
+import ProjectForm from './forms/ProjectForm';
 
 const ProjectCard = ({
   firebaseKey,

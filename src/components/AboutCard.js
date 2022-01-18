@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Button } from '@material-ui/core';
-import { deleteAboutMe } from '../../helpers/data/AboutMeData';
+import { deleteAboutMe } from '../helpers/data/AboutMeData';
 
 const AboutCard = ({
   firebaseKey,
