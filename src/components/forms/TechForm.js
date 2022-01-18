@@ -44,7 +44,7 @@ export default function TechForm({
             placeholder='Name'
             value={tech.name}
             onChange={inputHandler}
-          ></input>
+          ></input><br/>
           <label>Description:</label>
           <input
             name='description'
@@ -52,7 +52,7 @@ export default function TechForm({
             placeholder='Wiki description'
             value={tech.description}
             onChange={inputHandler}
-          ></input>
+          ></input><br/>
           <label>Image:</label>
           <input
             name='image'
@@ -60,7 +60,7 @@ export default function TechForm({
             placeholder='Image URL'
             value={tech.image}
             onChange={inputHandler}
-          ></input>
+          ></input><br/>
           <button type='submit'>Submit</button>
         </form>
       </div>

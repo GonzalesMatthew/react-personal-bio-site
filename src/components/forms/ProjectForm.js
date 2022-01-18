@@ -50,7 +50,7 @@ export default function ProjectForm({
             placeholder='Title'
             value={project.title}
             onChange={inputHandler}
-          ></input>
+          ></input><br/>
           <label>Image:</label>
           <input
             name='image'
@@ -58,7 +58,7 @@ export default function ProjectForm({
             placeholder='Image'
             value={project.image}
             onChange={inputHandler}
-          ></input>
+          ></input><br/>
           <label>Description:</label>
           <input
             name='description'
@@ -66,7 +66,7 @@ export default function ProjectForm({
             placeholder='Description'
             value={project.description}
             onChange={inputHandler}
-          ></input>
+          ></input><br/>
           <label>Tech Used:</label>
           <input
             name='technologiesUsed'
@@ -74,7 +74,7 @@ export default function ProjectForm({
             placeholder='Tech Used'
             value={project.technologiesUsed}
             onChange={inputHandler}
-          ></input>
+          ></input><br/>
           <label>Type:</label>
           <input
             name='type'
@@ -82,7 +82,7 @@ export default function ProjectForm({
             placeholder='Type:(Personal, Group)'
             value={project.type}
             onChange={inputHandler}
-          ></input>
+          ></input><br/>
           <label>Loom:</label>
           <input
             name='loom'
@@ -90,7 +90,7 @@ export default function ProjectForm({
             placeholder='Loom Video'
             value={project.loom}
             onChange={inputHandler}
-          ></input>
+          ></input><br/>
           <label>Netlify:</label>
           <input
             name='netlify'
@@ -98,7 +98,7 @@ export default function ProjectForm({
             placeholder='Netlify deploy'
             value={project.netlify}
             onChange={inputHandler}
-          ></input>
+          ></input><br/>
           <label>GitHub:</label>
           <input
             name='githubUrl'
@@ -106,7 +106,7 @@ export default function ProjectForm({
             placeholder='GitHub URL'
             value={project.githubUrl}
             onChange={inputHandler}
-          ></input>
+          ></input><br/>
           <label>Available:</label>
           <input
             name='available'
@@ -114,7 +114,7 @@ export default function ProjectForm({
             placeholder='Visible? (true, false)'
             value={project.available}
             onChange={inputHandler}
-          ></input>
+          ></input><br/>
           <button type='submit'>Submit</button>
         </form>
       </div>
