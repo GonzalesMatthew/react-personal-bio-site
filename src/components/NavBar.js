@@ -34,7 +34,7 @@ const NavBar = ({ admin, user }) => {
   return (
     <div>
       <Navbar id='nav-bar' color="light" light expand="md">
-        <NavbarBrand>Matthew G. Gonzales</NavbarBrand>
+        <NavbarBrand href='/'>Matthew G. Gonzales</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
