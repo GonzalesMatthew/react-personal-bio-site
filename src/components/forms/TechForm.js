@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { createTechnology, updateTechnology } from '../../helpers/data/TechnologyData';
 
 export default function TechForm({
-  formTitle, setTechnology, firebaseKey, name, image, description
+  formTitle, setTechnology, firebaseKey, name, image, description, user
 }) {
   const [tech, setTech] = useState({
     firebaseKey: firebaseKey || null,
@@ -22,9 +22,9 @@ export default function TechForm({
   const submitHandler = (e) => {
     e.preventDefault();
     if (tech.firebaseKey) {
-      updateTechnology(tech).then(setTechnology);
+      updateTechnology(tech, user.uid).then(setTechnology);
     } else {
-      createTechnology(tech).then(setTechnology);
+      createTechnology(tech, user.uid).then(setTechnology);
     }
   };
 
@@ -75,4 +75,5 @@ TechForm.propTypes = {
   name: PropTypes.string,
   image: PropTypes.string,
   description: PropTypes.string,
+  user: PropTypes.any
 };

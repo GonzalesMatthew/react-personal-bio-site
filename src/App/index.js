@@ -30,6 +30,13 @@ function App() {
     firebase.auth().onAuthStateChanged((authed) => {
       if (authed && (authed.uid === firebaseConfig.adminId)) {
         setAdmin(true);
+        const userInfoObj = {
+          fullname: authed.displayName,
+          profileImage: authed.photoURL,
+          uid: authed.uid,
+          email: authed.email
+        };
+        setUser(userInfoObj);
       } else if (authed) {
         const userInfoObj = {
           fullname: authed.displayName,
@@ -61,6 +68,7 @@ function App() {
     />
     <Routes
       admin={admin}
+      user={user}
       aboutMe={aboutMe}
       projects={projects}
       technology={technology}

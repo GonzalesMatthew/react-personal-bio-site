@@ -43,12 +43,18 @@ export default function Routes({
         <PrivateRoute
           exact path='/project-add'
           admin={admin}
-          component={() => <ProjectsAdd setProjects={setProjects}/>}
+          component={() => <ProjectsAdd
+            setProjects={setProjects}
+            admin={admin}
+            user={user}/>}
         />
         <PrivateRoute
           exact path='/tech-add'
           admin={admin}
-          component={() => <TechnologyAdd setTechnology={setTechnology}/>}
+          component={() => <TechnologyAdd
+            setTechnology={setTechnology}
+            admin={admin}
+            user={user}/>}
         />
         <Route path='*' component={NotFound} />
       </Switch>
